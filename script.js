@@ -1,29 +1,37 @@
 let input = document.getElementById("task_input");
 let submit = document.getElementById("submit");
 let All_items = document.querySelector("#items");
-let item = document.querySelector(".text_show");
-let toggle = document.querySelector(".toggle");
 
-//submit item
+// Submit new task
 submit.addEventListener("click", () => {
-  if (input.value == "") {
+  if (input.value.trim() === "") {
     console.log("nothing");
   } else {
+    let wrapper = document.createElement("div");
+    wrapper.className = "item-wrapper";
+
     let p = document.createElement("p");
-    p.classList = "text_show";
-    let i = document.createElement("i");
-    let i2 = document.createElement("i");
-    i2.classList = "delete fa-solid fa-trash";
-    i.classList = "circle fa-regular fa-circle";
-    p.insertAdjacentText("afterbegin", input.value);
-    p.prepend(i);
-    p.prepend(i2);
+    p.className = "text_show";
+
+    let trashIcon = document.createElement("i");
+    trashIcon.className = "delete fa-solid fa-trash";
+
+    let circleIcon = document.createElement("i");
+    circleIcon.className = "circle fa-regular fa-circle";
+
+    p.insertAdjacentText("beforeend", input.value);
+    p.prepend(circleIcon);
+    p.prepend(trashIcon);
+
+    wrapper.append(p);
+    All_items.append(wrapper);
+
     input.value = "";
-    All_items.append(p);
+    saveData();
   }
-  saveData();
 });
 
+// Toggle check or delete task
 document.querySelector("#items").addEventListener("click", (e) => {
   if (e.target.classList.contains("circle")) {
     e.target.classList.toggle("fa-regular");
@@ -32,18 +40,20 @@ document.querySelector("#items").addEventListener("click", (e) => {
     e.target.classList.toggle("fa-circle-check");
     saveData();
   } else if (e.target.classList.contains("delete")) {
-    const taskP = e.target.closest("p");
-    taskP.remove();
+    const wrapper = e.target.closest(".item-wrapper");
+    console.log(wrapper)
+    if (wrapper) wrapper.remove();
     saveData();
   }
 });
 
+// Save to localStorage
 function saveData() {
   localStorage.setItem("items", All_items.innerHTML);
 }
 
-//show in  dom
+// Load from localStorage
 function showData() {
-  All_items.innerHTML = localStorage.getItem("items");
+  All_items.innerHTML = localStorage.getItem("items") || "";
 }
 showData();
