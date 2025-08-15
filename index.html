@@ -8,30 +8,30 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="script.js" defer></script>
-    <script src="dark.js" defer></script>
+    <script type="module" src="main.js" defer></script>
+    
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="">
     
     <main id="container">
-        <div id="theme_box">
-            <button id="theme_button">
-               <span  id="dark" class=""> <i   class="icon fa-solid fa-moon"></i></span>
-               <span  id="light" class="hidden"> <i class="icon fa-solid fa-sun"></i></span>
+        <div class="theme_box">
+            <button class="theme_button">
+               <span class="darkIcon"> <i class="icon fa-solid fa-moon"></i></span>
+               <span class="lightIcon hidden" > <i class="icon fa-solid fa-sun"></i></span>
                 <p class="theme">theme</p>
             </button>
         </div>
-        <div id="box">
-            <input id="task_input" type="text" placeholder="+ Add Task">
+        <div class="box">
+            <input class="task_input" type="text" placeholder="+ Add Task">
 
-            <div id="submit">Submit</div>
+            <div class="submit">Submit</div>
         </div>
-        <div id="items">
+        <div class="items">
 
         </div>
-
+      
     </main>
 
 

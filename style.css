@@ -1,29 +1,37 @@
 :root {
-  --background-color: #fff2e0;
+  --background-color: #fff2e0; /* Light Theme */
   --text-color: #000;
   --icon-color: #f68537;
 }
+
 .dark {
-  --background-color: #4a102a;
-  --text-color: #8a8a8a;
+  --background-color: #4a102a; /* Dark Theme */
+  --text-color: #ffffff;
   --icon-color: #ffffff;
 }
 
-/* @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'); */
+.blue {
+  --background-color: #e0f4ff; /*blue theme can be use buy theme name into by create new themeToggler in main.js*/
+  --text-color: #003366;
+  --icon-color: #0066cc;
+}
+
+.green {
+  --background-color: #e5f9e0;/*green theme can be use buy theme name into by create new themeToggler in main.js*/
+  --text-color: #004d26;
+  --icon-color: #00cc66;
+}
+
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   border: 0;
-  background-color: var(--background-color);
+
   font-family: "Poppins", sans-serif;
 }
-/* body{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-} */
+
 #container {
   height: 100vh;
   width: 100vw;
@@ -33,8 +41,7 @@
   align-items: center;
 }
 
-
-#box {
+.box {
   height: 150px;
   width: 90%;
   border: 2px solid var(--text-color);
@@ -46,13 +53,13 @@
   flex-direction: column;
 }
 @media (min-width: 624px) {
-  #box {
+  .box {
     height: 150px;
     width: 50%;
   }
 }
 
-#task_input {
+.task_input {
   width: 100%;
   height: 50px;
   margin: 0;
@@ -62,6 +69,8 @@
   border-top: 2px solid var(--text-color);
   border-bottom: 2px solid var(--text-color);
   color: var(--text-color);
+  background-color: var(--background-color);
+  
 }
 
 .toggle {
@@ -69,18 +78,22 @@
   font-size: 35px;
   cursor: pointer;
 }
-#submit {
+.submit {
   padding: 6px 6px;
   background-color: var(--icon-color);
-  color: var(--text-color);
+  color: var(--background-color);
   margin-left: 60%;
   margin-top: 20px;
   margin-bottom: 20px;
   border-radius: 10px;
   cursor: pointer;
+  transition: transform 0.2s, opacity 0.2s;
 }
-
-#items {
+.submit:hover {
+  transform: translateY(-2px);
+  scale: 0.9;
+}
+.items {
   width: 90%;
   max-height: 400px;
   min-height: 100px;
@@ -93,19 +106,17 @@
   overflow-y: auto;
 }
 @media (min-width: 624px) {
-  #submit {
-  
-  margin-left: 75%;
-  
-}
-  #items {
+  .submit {
+    margin-left: 75%;
+  }
+  .items {
     width: 50%;
     max-height: 400px;
     min-height: 100px;
     overflow-y: auto;
   }
 }
-#items::-webkit-scrollbar {
+.items::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Edge */
 }
 .item-wrapper {
@@ -132,23 +143,34 @@
   margin-bottom: 15px;
 }
 .circle {
-  font-size: 24px;
+  font-size: 22px;
   color: var(--text-color);
   margin-right: 5px;
+  cursor: pointer;
+  transition: transform 0.2s, opacity 0.2s;
+}
+.circle:hover {
+  transform: translateY(-2px);
+  scale: 0.9;
 }
 .delete {
-  font-size: 24px;
+  font-size: 22px;
   color: var(--icon-color);
   margin-right: 5px;
+  cursor: pointer;
+  transition: transform 0.2s, opacity 0.2s;
 }
-
-
+.delete:hover {
+  transform: translateX(-1px);
+  scale: 0.9;
+}
 .icon {
   font-size: 25px;
   padding: 5px;
-  color:var(--text-color);
+  color: var(--text-color);
+  background-color: var(--background-color);
 }
-#theme_box {
+.theme_box {
   padding: 0;
   height: 40px;
   width: 100%;
@@ -156,26 +178,34 @@
   justify-content: flex-end;
   margin-right: 10%;
 }
+.theme_button {
+  background-color: var(--background-color);
+  transition: transform 0.2s, opacity 0.2s;
+}
+.theme_button:hover {
+  transform: translateY(-1px);
+  scale: 0.9;
+}
 @media (min-width: 624px) {
-  #theme_box {
+  .theme_box {
     padding: 0;
     height: 1px;
     width: 1px;
-    top:20px;
+    top: 20px;
     right: 20px;
     position: fixed;
   }
-  #theme_button {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  cursor: pointer;
- 
+  .theme_button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    background-color: var(--background-color);
+  }
 }
-}
-.theme{
+.theme {
   color: var(--text-color);
 }
-.hidden{
+.hidden {
   display: none;
 }
